@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <table border="1">
+      <tr th:each="shop : ${shops}">
+        <td><a th:href="${shop.urls}" th:text="${shop.name}"></a></td>
+        <td th:text="${shop.name_kana}"></td>
+        <td th:text="${shop.genre}"></td>
+        <td th:text="${shop.address}"></td>
+      </tr>
+    </table>
+  </body>
+</html>
