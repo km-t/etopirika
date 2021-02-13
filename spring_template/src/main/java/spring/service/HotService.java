@@ -14,7 +14,7 @@ public class HotService {
 
     public List<Shop> getShopList(String keyWord){
         keyWord = keyWord.replace("　", " ");
-        List<Shop> shops = dao.getStoreList(keyWord);
+        List<Shop> shops = dao.getDetailStoreList(keyWord);
         return shops;
     }
 }
