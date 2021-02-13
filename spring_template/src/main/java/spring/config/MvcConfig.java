@@ -20,40 +20,40 @@ import org.thymeleaf.templatemode.TemplateMode;
 @ComponentScan(basePackages = {"spring.controller"})
 public class MvcConfig implements WebMvcConfigurer{
 
-	@Bean
-	public SpringResourceTemplateResolver templateResolver() {
-		SpringResourceTemplateResolver templateResolver =
-				new SpringResourceTemplateResolver();
-		templateResolver.setPrefix("classpath:/templates/");
-		templateResolver.setSuffix(".html");
-		templateResolver.setTemplateMode(TemplateMode.HTML);
-		templateResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
-		templateResolver.setCacheable(false);
-		return templateResolver;
-	}
+    @Bean
+    public SpringResourceTemplateResolver templateResolver() {
+        SpringResourceTemplateResolver templateResolver =
+                new SpringResourceTemplateResolver();
+        templateResolver.setPrefix("classpath:/templates/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        templateResolver.setCacheable(false);
+        return templateResolver;
+    }
 
-	@Bean
-	public SpringTemplateEngine templateEngine(SpringResourceTemplateResolver templateResolver) {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver);
-		templateEngine.setEnableSpringELCompiler(true);
-		templateEngine.addDialect(new Java8TimeDialect());
-		return templateEngine;
-	}
+    @Bean
+    public SpringTemplateEngine templateEngine(SpringResourceTemplateResolver templateResolver) {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver);
+        templateEngine.setEnableSpringELCompiler(true);
+        templateEngine.addDialect(new Java8TimeDialect());
+        return templateEngine;
+    }
 
-	@Bean
-	public ThymeleafViewResolver viewResolver(SpringTemplateEngine templateEngine) {
-		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-		viewResolver.setTemplateEngine(templateEngine);
-		viewResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
-		return viewResolver;
-	}
+    @Bean
+    public ThymeleafViewResolver viewResolver(SpringTemplateEngine templateEngine) {
+        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setTemplateEngine(templateEngine);
+        viewResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        return viewResolver;
+    }
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-				registry.addResourceHandler("/css/**")
-					.addResourceLocations("classpath:/static/css/*")
-					.setCacheControl(CacheControl.noStore());
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+                registry.addResourceHandler("/css/**")
+                    .addResourceLocations("classpath:/static/css/*")
+                    .setCacheControl(CacheControl.noStore());
 
-	}
+    }
 }
