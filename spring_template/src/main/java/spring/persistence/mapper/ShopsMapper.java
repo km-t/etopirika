@@ -14,8 +14,8 @@ public interface ShopsMapper {
     List<Shop> findAll();
 
     @Insert("INSERT INTO"
-            + " SHOPS (urls,name,budget_average,catch,close,genre,large_area,large_service_area,lunch,middle_area,open,service_area,small_area,station_name,photo)"
+            + " SHOPS (address, urls,name,budget_average,catch,close,genre,large_area,large_service_area,lunch,middle_area,open,service_area,small_area,station_name,photo)"
             + " VALUES ("
-            + " #{urls}, #{name}, #{budgetAverage}, #{catch}, #{close}, #{genre}, #{largeArea}, #{largeServiceArea}, #{lunch}, #{middleArea}, #{open}, #{serviceArea}, #{smallArea}, #{stationName}, #{photo} )")
+            + " #{address}, #{urls}, #{name}, #{budgetAverage}, #{catch}, #{close}, #{genre}, #{largeArea}, #{largeServiceArea}, #{lunch}, #{middleArea}, #{open}, #{serviceArea}, #{smallArea}, #{stationName}, #{photo} )")
     void insertFavorite(Shop shop);
 }

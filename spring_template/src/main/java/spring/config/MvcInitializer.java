@@ -12,7 +12,7 @@ public class MvcInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
         @Override
         protected Class<?>[] getServletConfigClasses() {
-            return new Class<?>[] {DataSourceConfig.class, MyBatisConfig.class, ServiceConfig.class, MvcConfig.class, DaoConfig.class};
+            return new Class<?>[] {DataSourceConfig.class, MyBatisConfig.class, ServiceConfig.class, MvcConfig.class, DaoConfig.class, AopConfig.class};
         }
     @Override
     protected String[] getServletMappings() {

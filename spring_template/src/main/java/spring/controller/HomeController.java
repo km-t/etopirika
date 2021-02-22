@@ -24,12 +24,20 @@ public class HomeController {
 
     @GetMapping("/")
     public String showHome(@RequestParam String keyWord, Model model) {
-        List<Shop> shops = service.getShopList(keyWord);
-        if(shops==null) {
-            return "error";
-        }else {
-            model.addAttribute("shops", shops);
-            return "home";
-        }
+            List<Shop> shops = service.getShopList(keyWord);
+            int i=1;
+            if(i==1) {
+                if(Math.random()>0.5)throw new NullPointerException();
+                else throw new IndexOutOfBoundsException();
+            }
+            if(shops==null) {
+                return "error";
+            }else {
+                model.addAttribute("shops", shops);
+                return "home";
+            }
+
+
+
     }
 }

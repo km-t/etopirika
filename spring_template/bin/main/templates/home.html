@@ -10,6 +10,7 @@
     <tr th:each="shop : ${shops}">
       <td><a th:href="${shop.urls}" th:text="${shop.name}"></a></td>
       <td th:text="${shop.budgetAverage}"></td>
+      <td th:text="${shop.address}"></td>
       <td th:text="${shop.catch}"></td>
       <td th:text="${shop.close}"></td>
       <td th:text="${shop.genre}"></td>
@@ -25,6 +26,7 @@
       <td>
         <form th:action="@{/favorite/fav}" method="post" th:object="${shop}">
           <input type="hidden" th:value="*{urls}" name="urls">
+          <input type="hidden" th:value="*{address}" name="address">
           <input type="hidden" th:value="*{name}" name="name">
           <input type="hidden" th:value="*{budgetAverage}" name="budgetAverage">
           <input type="hidden" th:value="*{catch}" name="catch">

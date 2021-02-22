@@ -22,7 +22,6 @@ public class FavoriteService {
     }
 
     public void setFavorite(Shop shop) {
-        System.out.println(shop.getCatch());
         mapper.insertFavorite(shop);
     }
 }

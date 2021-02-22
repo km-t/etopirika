@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-  <h1>error</h1>
-  <form th:action="@{/}">
-      <input type="submit" value="最初からやり直す">
-  </form>
+<h1>error.html</h1>
+  <p th:text="${exception}"></p>
 </body>
 </html>

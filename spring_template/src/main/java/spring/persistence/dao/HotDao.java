@@ -107,14 +107,6 @@ public class HotDao {
             jsons = jsons.replaceAll("\"urls\":\\{\"pc\"", "\"urls\"");
             jsons = jsons.replaceAll("},\"wifi\"[^}]*}", "}");
 
-
-
-
-            /*            jsons = jsons.replaceAll("\"desc\":\"[0-9]\",", "");
-            jsons = jsons.replaceAll(":\\{\"name\"", "");
-            jsons = jsons.replaceAll("},\"id\":\"[0-9a-zA-Z]{10}\"", "");
-            jsons = jsons.replace(":{\"pc\"", "");
-            jsons = jsons.replace("}}", "}");*/
             return jsons;
         }else {
             return null;
