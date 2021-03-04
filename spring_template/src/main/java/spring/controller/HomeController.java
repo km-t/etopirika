@@ -23,7 +23,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String showHome(@RequestParam String keyWord, Model model) {
+    public String showHome(@RequestParam String keyWord, Model model) throws NullPointerException, IndexOutOfBoundsException {
             List<Shop> shops = service.getShopList(keyWord);
             int i=1;
             if(i==1) {

@@ -39,11 +39,20 @@ public class MyAop {
             System.out.println(s);
         }
     }
-
-    @AfterThrowing(value="execution(* *..*service.get*(..) throws Exception)", throwing="ex")
+    /*
+    @AfterThrowing(value="execution(* *..*.get*(..) throws Exception)", throwing="ex")
     public String exceptionThrowing(JoinPoint jp, Exception ex) {
         Signature sig = jp.getSignature();
         System.out.println("Throwing Exception (method name is " + sig.getName() + ")");
+        return "/error/";
+    }
+    */
+
+    @AfterThrowing(value="execution(* showHome(..))", throwing="ex")
+    public String exceptionThrowingHome(JoinPoint jp, Exception ex) {
+        Signature sig = jp.getSignature();
+        System.out.println("Throwing Exception (method name is " + sig.getName() + ")");
+        ex.printStackTrace();
         return "/error/";
     }
 }
