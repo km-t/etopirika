@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.persistence.entity.Shop;
 import spring.service.FavoriteService;
@@ -33,6 +34,12 @@ public class FavoriteController {
     @PostMapping("/fav")
     public String setFavorite(@ModelAttribute Shop favShop) {
         service.setFavorite(favShop);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete")
+    public String deleteFavoriteShop(@RequestParam String address) {
+        System.out.println("address======"+address);
         return "redirect:/";
     }
 }

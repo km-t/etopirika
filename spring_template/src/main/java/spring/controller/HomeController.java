@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
+import spring.persistence.entity.MyException;
 import spring.persistence.entity.Shop;
 import spring.service.HotService;
 
@@ -23,21 +27,10 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String showHome(@RequestParam String keyWord, Model model) throws NullPointerException, IndexOutOfBoundsException {
-            List<Shop> shops = service.getShopList(keyWord);
-            int i=1;
-            if(i==1) {
-                if(Math.random()>0.5)throw new NullPointerException();
-                else throw new IndexOutOfBoundsException();
-            }
-            if(shops==null) {
-                return "error";
-            }else {
-                model.addAttribute("shops", shops);
-                return "home";
-            }
-
-
-
+    public String showHome(@RequestParam String keyWord, Model model)
+            throws JsonMappingException, JsonProcessingException, MyException {
+        List<Shop> shops = service.getShopList(keyWord);
+        model.addAttribute("shops", shops);
+        return "home";
     }
 }

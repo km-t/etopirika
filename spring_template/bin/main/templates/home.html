@@ -6,6 +6,8 @@
 </head>
 <body>
   <a th:href="@{/favorite/}">お気に入り一覧画面</a>
+  <a th:href="@{/}">戻る</a>
+
   <table border="1">
     <tr th:each="shop : ${shops}">
       <td><a th:href="${shop.urls}" th:text="${shop.name}"></a></td>

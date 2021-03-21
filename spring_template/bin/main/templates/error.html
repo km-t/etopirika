@@ -7,5 +7,9 @@
 <body>
 <h1>error.html</h1>
   <p th:text="${exception}"></p>
+  <br>
+  <form th:action="@{/}">
+    <button type="submit">戻る</button>
+  </form>
 </body>
 </html>

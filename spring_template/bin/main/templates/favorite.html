@@ -22,6 +22,11 @@
       <td th:text="${shop.smallArea}"></td>
       <td th:text="${shop.stationName}"></td>
       <td><img alt="" th:src="${shop.photo}"></td>
+      <td>
+        <form th:action="@{/favorite/delete}" method="get">
+           <input type="hidden" name="address" th:value="${shop.address}">
+          <button type="submit">削除</button>
+        </form>
     </tr>
     <br>
   </table>
