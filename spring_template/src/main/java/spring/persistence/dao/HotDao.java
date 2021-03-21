@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +15,7 @@ import spring.persistence.entity.MyException;
 import spring.persistence.entity.Shop;
 
 @Component
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class HotDao {
     private final String APIKEY = "baf72189395489c3";
 
@@ -43,64 +45,7 @@ public class HotDao {
             int s = oldJson.indexOf("shop\":[{") + 7;
             int e = oldJson.indexOf("}]}}") + 1;
             String jsons = "[" + oldJson.substring(s, e) + "]";
-            jsons = jsons.replaceAll("\"access[^,]*,", "");
-            jsons = jsons.replaceAll("\"band[^,]*,", "");
-            jsons = jsons.replaceAll("\"barrier_free[^,]*,", "");
-            jsons = jsons.replaceAll("\"budget\":\\{", "\"budget_");
-            jsons = jsons.replaceAll("\"budget_memo[^,]*,", "");
-            jsons = jsons.replaceAll("\"capacity[^,]*,", "");
-            jsons = jsons.replaceAll("\"card[^,]*,", "");
-            jsons = jsons.replaceAll("\"code[^,]*,", "");
-            jsons = jsons.replaceAll("\"charter[^,]*,", "");
-            jsons = jsons.replaceAll("\"child[^,]*,", "");
-            jsons = jsons.replaceAll("\"coupon_urls[^}]*},", "");
-            jsons = jsons.replaceAll("\"course[^,]*,", "");
-            jsons = jsons.replaceAll("\"english[^,]*,", "");
-            jsons = jsons.replaceAll("\"free_[^,]*,", "");
-            jsons = jsons.replaceAll("\"horigotatsu[^,]*,", "");
-            jsons = jsons.replaceAll("\"id[^,]*,", "");
-            jsons = jsons.replaceAll("\"karaoke[^,]*,", "");
-            jsons = jsons.replaceAll("\"ktai_coup[^,]*,", "");
-            jsons = jsons.replaceAll("\"lat\"[^,]*,", "");
-            jsons = jsons.replaceAll("\"lng\"[^,]*,", "");
-            jsons = jsons.replaceAll("\"logo_image[^,]*,", "");
-            jsons = jsons.replaceAll("\"midnight[^,]*,", "");
-            jsons = jsons.replaceAll("\"mobile_access[^,]*,", "");
-            jsons = jsons.replaceAll("\"non_smoking[^,]*,", "");
-            jsons = jsons.replaceAll("\"other_memo[^,]*,", "");
-            jsons = jsons.replaceAll("\"parking[^,]*,", "");
-            jsons = jsons.replaceAll("\"party[^,]*,", "");
-            jsons = jsons.replaceAll("\"pet\"[^,]*,", "");
-            jsons = jsons.replaceAll("\"private_room[^,]*,", "");
-            jsons = jsons.replaceAll("\"shop_detail_memo[^,]*,", "");
-            jsons = jsons.replaceAll("\"show\"[^,]*,", "");
-            jsons = jsons.replaceAll("\"tatami\"[^,]*,", "");
-            jsons = jsons.replaceAll("\"tv\"[^,]*,", "");
-            jsons = jsons.replaceAll("\"wedding\"[^,]*,", "");
-
-            jsons = jsons.replaceAll("\"average", "average");
-            jsons = jsons.replaceAll("円\",\"name[^}]*}", "円\"");
-
-            jsons = jsons.replaceAll("\"genre\":\\{\"catch", "\"genre");
-            jsons = jsons.replaceAll("\"name_kana[^,]*,", "");
-            jsons = jsons.replaceAll("\",\"name[^}]*}", "\"");
-
-            jsons = jsons.replaceAll("area\":\\{\"name", "area");
-            jsons = jsons.replaceAll("},\"lunch", ",\"lunch");
-            jsons = jsons.replaceAll("},\"name", ",\"name");
-            jsons = jsons.replaceAll("},\"small", ",\"small");
-            jsons = jsons.replaceAll("},\"station", ",\"station");
-            jsons = jsons.replaceAll("},\"large", ",\"large");
-
-            jsons = jsons.replaceAll("\"photo[^}]*}", "\"photo\"");
-            jsons = jsons.replaceAll("\"photo\",[^,]*,", "\"photo\"");
-            jsons = jsons.replaceAll("\"photo\"\"m\"", "\"photo\"");
-            jsons = jsons.replaceAll(",\"s\"[^}]*}}", "");
-            jsons = jsons.replaceAll("\"urls\":\\{\"pc\"", "\"urls\"");
-            jsons = jsons.replaceAll("},\"wifi\"[^}]*}", "}");
-
-            jsons = jsons.replaceAll("\"sub_genre[^,]*,", "");
-
+            System.out.println(jsons);
             return jsons;
         }else {
             throw new MyException("検索結果がありません");

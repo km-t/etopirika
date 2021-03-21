@@ -3,47 +3,31 @@
 <head>
 <title>Getting Started: Serving Web Content</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
   <a th:href="@{/favorite/}">お気に入り一覧画面</a>
   <a th:href="@{/}">戻る</a>
 
-  <table border="1">
+  <table class="table table-bordered table-striped">
+    <tr class="table-info">
+      <td>店舗名</td>
+      <td>住所</td>
+      <td>開店日時</td>
+      <td>最寄り駅</td>
+    </tr>
     <tr th:each="shop : ${shops}">
-      <td><a th:href="${shop.urls}" th:text="${shop.name}"></a></td>
-      <td th:text="${shop.budgetAverage}"></td>
-      <td th:text="${shop.address}"></td>
-      <td th:text="${shop.catch}"></td>
-      <td th:text="${shop.close}"></td>
-      <td th:text="${shop.genre}"></td>
-      <td th:text="${shop.largeArea}"></td>
-      <td th:text="${shop.largeServiceArea}"></td>
-      <td th:text="${shop.lunch}"></td>
-      <td th:text="${shop.middleArea}"></td>
-      <td th:text="${shop.open}"></td>
-      <td th:text="${shop.serviceArea}"></td>
-      <td th:text="${shop.smallArea}"></td>
-      <td th:text="${shop.stationName}"></td>
-      <td><img alt="" th:src="${shop.photo}"></td>
+      <td class="col-2" th:text="${shop.name}"></td>
+      <td class="col-4" th:text="${shop.address}"></td>
+      <td class="col-4" th:text="${shop.open}"></td>
+      <td class="col-2" th:text="${shop.stationName}"></td>
       <td>
         <form th:action="@{/favorite/fav}" method="post" th:object="${shop}">
-          <input type="hidden" th:value="*{urls}" name="urls">
           <input type="hidden" th:value="*{address}" name="address">
           <input type="hidden" th:value="*{name}" name="name">
-          <input type="hidden" th:value="*{budgetAverage}" name="budgetAverage">
-          <input type="hidden" th:value="*{catch}" name="catch">
-          <input type="hidden" th:value="*{close}" name="close">
-          <input type="hidden" th:value="*{genre}" name="genre">
-          <input type="hidden" th:value="*{largeArea}" name="largeArea">
-          <input type="hidden" th:value="*{largeServiceArea}" name="largeServiceArea">
-          <input type="hidden" th:value="*{lunch}" name="lunch">
-          <input type="hidden" th:value="*{middleArea}" name="middleArea">
           <input type="hidden" th:value="*{open}" name="open">
-          <input type="hidden" th:value="*{serviceArea}" name="serviceArea">
-          <input type="hidden" th:value="*{smallArea}" name="smallArea">
           <input type="hidden" th:value="*{stationName}" name="stationName">
-          <input type="hidden" th:value="*{photo}" name="photo">
-          <input type="submit" name="favShop" value="お気に入り">
+          <button type="submit" class="btn btn-secondary" name="favShop">お気に入り</button>
         </form>
       </td>
     </tr>
